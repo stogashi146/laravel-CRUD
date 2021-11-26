@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +13,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect("/articles");
 });
+
+Route::get("/articles","ArticleController@index")->name("article.list");
+Route::get("/article/new", "ArticleController@create")->name("article.new");
+Route::get("/article/{id}", "ArticleController@show")->name("article.show");
+Route::delete("/article/{id}", "ArticleController@destroy")->name("article.delete");
+
